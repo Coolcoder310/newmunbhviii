@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — NewMUN VIII</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/index.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">
+        <img src="/assets/logo.png" alt="NewMUN VIII logo">
+      </span>
+      <span class="brand-name">NewMUN VIII</span>
+    </a>
+
+   <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="councils.html" class="nav-link">Councils</a>
+      <a href="oc.html" class="nav-link">OC</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="register.html" class="nav-link active">Register</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="section gallery-page">
+  <h2 class="section-title reveal">Conference Gallery</h2>
+  <p class="section-subtitle reveal">Explore high-resolution memories from our past editions and prepare for 2026.</p>
+
+  <div class="slider-container reveal">
+    <button class="slider-arrow slider-arrow--left" id="slidePrev" aria-label="Previous Slide">&#10094;</button>
+    <button class="slider-arrow slider-arrow--right" id="slideNext" aria-label="Next Slide">&#10095;</button>
+
+    <div class="slider-track" id="sliderTrack">
+
+      <article class="gallery-card">
+        <div class="gallery-card-media">
+          <img src="/assets/legacy-vi.jpg" alt="NewMUN VI 2024">
+          <span class="gallery-year-tag">2024</span>
+        </div>
+        <div class="gallery-card-content">
+          <h3>NewMUN VI (2024)</h3>
+          <p>Highlights from our 6th edition featuring intense debate, consensus-building, and press coverage.</p>
+          <button class="btn btn-pill gallery-link-btn" data-link="https://drive.google.com">View 2024 Album</button>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="gallery-card-media">
+          <img src="/assets/legacy-vii.jpeg" alt="NewMUN VII 2025">
+          <span class="gallery-year-tag">2025</span>
+        </div>
+        <div class="gallery-card-content">
+          <h3>NewMUN VII (2025)</h3>
+          <p>14 & 15th November 2025 — Moments of speechmaking, awards ceremony, and social events.</p>
+          <button class="btn btn-pill gallery-link-btn" data-link="https://drive.google.com">View 2025 Album</button>
+        </div>
+      </article>
+
+      <article class="gallery-card upcoming">
+        <div class="gallery-card-media">
+          <img src="/assets/delegates.jpeg" alt="NewMUN VIII 2026 Upcoming">
+          <span class="gallery-year-tag tag-upcoming">2026 · Upcoming</span>
+        </div>
+        <div class="gallery-card-content">
+          <h3>NewMUN VIII (2026)</h3>
+          <p>Building Excellence for Tomorrow. Official conference photo galleries will open during the event.</p>
+          <button class="btn btn-pill gallery-link-btn" disabled style="opacity: 0.6; cursor: not-allowed;">Upcoming</button>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="gallery-card-media">
+          <img src="/assets/press.jpg" alt="Behind the Scenes">
+          <span class="gallery-year-tag">Special</span>
+        </div>
+        <div class="gallery-card-content">
+          <h3>Behind the Scenes</h3>
+          <p>Organizing Committee pre-conference prep, press releases, setup, and logistics in action.</p>
+          <button class="btn btn-pill gallery-link-btn" data-link="https://drive.google.com">View BTS Album</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="modal-backdrop" id="galleryModalBackdrop">
+  <div class="modal modal-sm" id="galleryLinkModal">
+    <button class="modal-close" id="galleryModalClose" aria-label="Close modal">&times;</button>
+    <div class="modal-body" style="text-align: center; padding-top: 36px;">
+      <h3 style="margin-bottom: 12px; color: var(--navy);">External Album</h3>
+      <p style="color: var(--slate); margin-bottom: 24px;">You are about to open the photo album in a new tab.</p>
+      <a href="#" id="confirmAlbumBtn" target="_blank" class="btn btn-pill" style="background: var(--royal); color: var(--paper);">Open Google Drive Album</a>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-title">NewMUN VIII &mdash; 2026</p>
+    </div>
+    <div class="footer-emblem">
+      <img src="/assets/logo.png" alt="NewMUN VIII logo" class="footer-logo">
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="councils.html">Councils</a>
+      <a href="oc.html">OC</a>
+      <a href="faq.html">FAQ</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/index.js"></script>
+</body>
+</html>

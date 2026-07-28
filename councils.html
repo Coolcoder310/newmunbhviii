@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Councils — NewMUN VIII</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/index.css">
+
+<style>
+  /* =========================================================
+     Tab Switcher Custom Styles
+     ========================================================= */
+  .tab-switcher-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .tab-switcher {
+    display: inline-flex;
+    background: var(--sky-1, #dcebfc);
+    padding: 6px;
+    border-radius: var(--radius-pill, 999px);
+    box-shadow: inset 0 2px 4px rgba(11,29,81,0.08);
+  }
+
+  .tab-btn {
+    padding: 12px 32px;
+    border-radius: var(--radius-pill, 999px);
+    font-weight: 700;
+    font-size: 0.98rem;
+    color: var(--slate, #5b6478);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+
+  .tab-btn.active {
+    background: var(--navy, #0b1d51);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(11,29,81,0.25);
+  }
+
+  .tab-btn:hover:not(.active) {
+    color: var(--royal, #1b3aa8);
+  }
+
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">
+        <img src="/assets/logo.png" alt="NewMUN VIII logo">
+      </span>
+      <span class="brand-name">NewMUN VIII</span>
+    </a>
+
+   <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="councils.html" class="nav-link">Councils</a>
+      <a href="oc.html" class="nav-link">OC</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="register.html" class="nav-link active">Register</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="section councils-page">
+  <h2 class="section-title reveal">Councils Offered</h2>
+  <p class="section-subtitle reveal">Explore our diverse committees designed to challenge, inspire, and foster diplomacy across all experience levels.</p>
+
+  <div class="tab-switcher-container reveal">
+    <div class="tab-switcher">
+      <button class="tab-btn active" data-tab="senior">Senior Councils</button>
+      <button class="tab-btn" data-tab="junior">Junior Councils</button>
+    </div>
+  </div>
+
+  <div class="tab-content active" id="tab-senior">
+    <div class="council-grid">
+      <div class="council-card reveal">
+        <img src="/assets/unsc.jpeg" alt="UNSC council">
+        <div class="council-overlay">
+          <span class="council-name">UNSC</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-unsc">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card reveal">
+        <img src="/assets/fia.jpeg" alt="FIA council placards">
+        <div class="council-overlay">
+          <span class="council-name">FIA</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-fia">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card reveal">
+        <img src="/assets/lok-sabha.jpeg" alt="Lok Sabha council">
+        <div class="council-overlay">
+          <span class="council-name">Lok Sabha</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-loksabha">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card reveal">
+        <img src="/assets/legacy-vi.jpg" alt="DISEC Council">
+        <div class="council-overlay">
+          <span class="council-name">DISEC</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-disec">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card reveal">
+        <img src="/assets/delegates.jpeg" alt="Historical Crisis Committee">
+        <div class="council-overlay">
+          <span class="council-name">HCC</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-hcc">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card reveal">
+        <img src="/assets/press.jpg" alt="International Press">
+        <div class="council-overlay">
+          <span class="council-name">IPC</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-ipc">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card reveal">
+        <img src="/assets/chairs.jpg" alt="ECOFIN Council">
+        <div class="council-overlay">
+          <span class="council-name">ECOFIN</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-ecofin">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card reveal">
+        <img src="/assets/legacy-vii.jpeg" alt="UNHRC Council">
+        <div class="council-overlay">
+          <span class="council-name">UNHRC</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-unhrc">Know More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-junior">
+    <div class="council-grid">
+      <div class="council-card">
+        <img src="/assets/delegates.jpeg" alt="UNGA Junior Committee">
+        <div class="council-overlay">
+          <span class="council-name">UNGA</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-jr-unga">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card">
+        <img src="/assets/chairs.jpg" alt="UNESCO Junior Committee">
+        <div class="council-overlay">
+          <span class="council-name">UNESCO</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-jr-unesco">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card">
+        <img src="/assets/legacy-vii.jpeg" alt="UNICEF Junior Committee">
+        <div class="council-overlay">
+          <span class="council-name">UNICEF</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-jr-unicef">Know More</button>
+        </div>
+      </div>
+
+      <div class="council-card">
+        <img src="/assets/legacy-vi.jpg" alt="WHO Junior Committee">
+        <div class="council-overlay">
+          <span class="council-name">WHO</span>
+          <button class="btn btn-pill btn-overlay modal-trigger" data-modal="modal-jr-who">Know More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-backdrop" id="modalBackdrop">
+
+  <div class="modal" id="modal-unsc">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/unsc.jpeg" alt="UNSC Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/delegates.jpeg" alt="UNSC Session image 1">
+        <img src="/assets/chairs.jpg" alt="UNSC Session image 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>United Nations Security Council (UNSC)</h3>
+      <span class="modal-tag">Flagship Committee</span>
+      <h4>Agenda</h4>
+      <p>Evaluating international maritime security threats and state sovereignty issues in global trade corridors.</p>
+      <h4>Executive Board</h4>
+      <p><strong>President:</strong> David Vance | <strong>Vice President:</strong> Maya Patel</p>
+      <h4>Overview</h4>
+      <p>The UNSC tests advanced diplomatic agility, strategic alliance building, and high-pressure crisis management among nation-state delegates.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-fia">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/fia.jpeg" alt="FIA Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/legacy-vii.jpeg" alt="FIA Session standard photo 1">
+        <img src="/assets/legacy-vi.jpg" alt="FIA Session standard photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Fédération Internationale de l'Automobile (FIA)</h3>
+      <span class="modal-tag">Specialized Committee</span>
+      <h4>Agenda</h4>
+      <p>Addressing ethics, technological innovation, and financial parity within global motorsport regulations and sustainability initiatives.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Chairperson:</strong> Alex Mercer | <strong>Vice Chair:</strong> Sarah Jenkins</p>
+      <h4>Overview</h4>
+      <p>Delegates in the FIA will tackle high-stakes policy dilemmas spanning safety, environmental impact, and economic equity across global motorsport frameworks.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-loksabha">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/lok-sabha.jpeg" alt="Lok Sabha Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/legacy-vi.jpg" alt="Lok Sabha Session image 1">
+        <img src="/assets/press.jpg" alt="Lok Sabha Session image 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Lok Sabha</h3>
+      <span class="modal-tag">Indian Political Committee</span>
+      <h4>Agenda</h4>
+      <p>Deliberating national agricultural reform, digital governance, and regional infrastructure funding policy.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Speaker:</strong> Rajesh Kumar | <strong>Deputy Speaker:</strong> Ananya Rao</p>
+      <h4>Overview</h4>
+      <p>An intense platform simulating Indian parliamentary proceedings, requiring parliamentarians to navigate heated debate and political strategy.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-disec">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/legacy-vi.jpg" alt="DISEC Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/unsc.jpeg" alt="DISEC photo 1">
+        <img src="/assets/fia.jpeg" alt="DISEC photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Disarmament and International Security Committee (DISEC)</h3>
+      <span class="modal-tag">GA Committee</span>
+      <h4>Agenda</h4>
+      <p>Preventing an arms race in outer space and mitigating cyber warfare capabilities between nations.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Chair:</strong> Liam Thorne | <strong>Co-Chair:</strong> Chloe Bennett</p>
+      <h4>Overview</h4>
+      <p>Focuses on peace, international defense standards, global non-proliferation treaties, and regional safety.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-hcc">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/delegates.jpeg" alt="HCC Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/legacy-vii.jpeg" alt="HCC photo 1">
+        <img src="/assets/chairs.jpg" alt="HCC photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Historical Crisis Committee (HCC)</h3>
+      <span class="modal-tag">Crisis Committee</span>
+      <h4>Agenda</h4>
+      <p>The 1962 Cuban Missile Crisis: Re-evaluating Brinkmanship in the Cold War era.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Crisis Director:</strong> Ethan Cole | <strong>Chair:</strong> Sophia Martinez</p>
+      <h4>Overview</h4>
+      <p>Fast-paced and unpredictable, delegates must issue directives and resolve dynamic crises in real-time history.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-ipc">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/press.jpg" alt="IPC Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/lok-sabha.jpeg" alt="IPC photo 1">
+        <img src="/assets/legacy-vi.jpg" alt="IPC photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>International Press Corps (IPC)</h3>
+      <span class="modal-tag">Press & Media</span>
+      <h4>Agenda</h4>
+      <p>Neutral reporting, photojournalism, press conferences, and daily newsletter publication during NewMUN VIII.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Editor-in-Chief:</strong> Hannah Abbott | <strong>Head Photographer:</strong> Neil Sharma</p>
+      <h4>Overview</h4>
+      <p>Journalists and photographers cover committee debates live, publish articles, and hold delegates accountable.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-ecofin">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/chairs.jpg" alt="ECOFIN Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/delegates.jpeg" alt="ECOFIN photo 1">
+        <img src="/assets/unsc.jpeg" alt="ECOFIN photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Economic and Financial Committee (ECOFIN)</h3>
+      <span class="modal-tag">General Assembly</span>
+      <h4>Agenda</h4>
+      <p>Addressing global inflation, cryptocurrency regulation, and debt relief strategies for developing economies.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Chair:</strong> Julian Hayes | <strong>Vice Chair:</strong> Elena Rostova</p>
+      <h4>Overview</h4>
+      <p>ECOFIN deals with international economic development, global financial stability, and sustainable trade frameworks.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-unhrc">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/legacy-vii.jpeg" alt="UNHRC Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/press.jpg" alt="UNHRC photo 1">
+        <img src="/assets/fia.jpeg" alt="UNHRC photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>United Nations Human Rights Council (UNHRC)</h3>
+      <span class="modal-tag">Human Rights Committee</span>
+      <h4>Agenda</h4>
+      <p>Protecting human rights in conflict zones and mitigating state-sponsored digital surveillance.</p>
+      <h4>Executive Board</h4>
+      <p><strong>President:</strong> Marcus Vance | <strong>Vice President:</strong> Amara Diop</p>
+      <h4>Overview</h4>
+      <p>UNHRC focuses on promoting and protecting fundamental freedoms and rights across global regions.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-jr-unga">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/delegates.jpeg" alt="UNGA Junior Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/legacy-vi.jpg" alt="UNGA photo 1">
+        <img src="/assets/chairs.jpg" alt="UNGA photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>UN General Assembly (Junior)</h3>
+      <span class="modal-tag">Introductory GA</span>
+      <h4>Agenda</h4>
+      <p>Promoting global literacy and equal access to basic education in developing nations.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Chairperson:</strong> Lucas Wright | <strong>Vice Chair:</strong> Maya Lin</p>
+      <h4>Overview</h4>
+      <p>Designed for beginner delegates to master parliamentary procedure, draft resolutions, and practice diplomacy.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-jr-unesco">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/chairs.jpg" alt="UNESCO Junior Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/press.jpg" alt="UNESCO photo 1">
+        <img src="/assets/unsc.jpeg" alt="UNESCO photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>UNESCO (Junior)</h3>
+      <span class="modal-tag">Culture & Heritage</span>
+      <h4>Agenda</h4>
+      <p>Safeguarding endangered world heritage sites and promoting sustainable eco-tourism.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Director:</strong> Oliver Scott | <strong>Deputy Director:</strong> Nina Patel</p>
+      <h4>Overview</h4>
+      <p>Engaging junior delegates in preservation, international cultural exchange, and environmental heritage policy.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-jr-unicef">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/legacy-vii.jpeg" alt="UNICEF Junior Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/fia.jpeg" alt="UNICEF photo 1">
+        <img src="/assets/lok-sabha.jpeg" alt="UNICEF photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>UNICEF (Junior)</h3>
+      <span class="modal-tag">Children & Youth</span>
+      <h4>Agenda</h4>
+      <p>Eradicating child labor and ensuring healthcare access for children in underprivileged regions.</p>
+      <h4>Executive Board</h4>
+      <p><strong>Chair:</strong> Leo Fernandez | <strong>Vice Chair:</strong> Chloe Zhang</p>
+      <h4>Overview</h4>
+      <p>Focuses on child welfare and rights, introducing young delegates to humanitarian debate and resolution writing.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-jr-who">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-banner">
+      <img src="/assets/legacy-vi.jpg" alt="WHO Junior Banner" class="banner-img">
+      <div class="top-right-images">
+        <img src="/assets/delegates.jpeg" alt="WHO photo 1">
+        <img src="/assets/chairs.jpg" alt="WHO photo 2">
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>World Health Organization (Junior)</h3>
+      <span class="modal-tag">Global Health</span>
+      <h4>Agenda</h4>
+      <p>Improving global nutrition standards and combatting preventable childhood illness.</p>
+      <h4>Executive Board</h4>
+      <p><strong>President:</strong> Daniel Kim | <strong>Vice President:</strong> Sofia Rossi</p>
+      <h4>Overview</h4>
+      <p>A beginner-friendly simulation addressing public health challenges, disease prevention, and global healthcare access.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-title">NewMUN VIII &mdash; 2026</p>
+    </div>
+    <div class="footer-emblem">
+      <img src="/assets/logo.png" alt="NewMUN VIII logo" class="footer-logo">
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="councils.html">Councils</a>
+      <a href="oc.html">OC</a>
+      <a href="faq.html">FAQ</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/index.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Tab Switcher Handler
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.getAttribute('data-tab');
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetContent = document.getElementById(`tab-${targetTab}`);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
+
+  // Modal Handler (Ensures proper opening/closing for all councils)
+  const modalTriggers = document.querySelectorAll('.modal-trigger');
+  const modalBackdrop = document.getElementById('modalBackdrop');
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const modalId = trigger.getAttribute('data-modal');
+      const targetModal = document.getElementById(modalId);
+      if (targetModal) {
+        document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        targetModal.style.display = 'block';
+        modalBackdrop.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  if (modalBackdrop) {
+    modalBackdrop.querySelectorAll('.modal-close').forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        modalBackdrop.classList.remove('is-active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>

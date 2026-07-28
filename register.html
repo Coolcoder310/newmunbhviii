@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — NewMUN VIII</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/index.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+  /* =========================================================
+     Full-Page Dynamic Registration Layout Styles
+     ========================================================= */
+
+  /* Full Screen Background & Overlay */
+  .register-viewport {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 110px; /* Offset for fixed header */
+    padding-bottom: 50px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.6s ease-in-out;
+  }
+
+  .register-viewport::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 22, 53, 0.88) 0%, rgba(11, 22, 53, 0.78) 50%, rgba(11, 22, 53, 0.95) 100%);
+    z-index: 1;
+  }
+
+  .register-content-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 1050px;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* TOP ROLE SELECTOR CONTAINER */
+  .top-dock-container {
+    margin-bottom: 24px;
+  }
+
+  /* Desktop Top Dock */
+  .desktop-role-dock {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    background: rgba(11, 22, 53, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 8px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .dock-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.72);
+    padding: 12px 10px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s var(--ease);
+  }
+
+  .dock-btn i {
+    font-size: 1.1rem;
+  }
+
+  .dock-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .dock-btn.is-active {
+    background: var(--royal);
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(27, 58, 168, 0.5);
+  }
+
+  /* MOBILE ROLE SELECTOR (< Senior Delegate >) */
+  .mobile-role-dock {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(11, 22, 53, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  }
+
+  .mobile-nav-arrow {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav-arrow:active {
+    background: var(--royal);
+    transform: scale(0.92);
+  }
+
+  .mobile-role-label-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.98rem;
+    text-align: center;
+  }
+
+  .mobile-role-label-group i {
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  /* Main Card Display */
+  .role-display-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-lg);
+    padding: 38px;
+    color: #ffffff;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .role-header-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 20px;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .role-title-group h2 {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+
+  .role-badge {
+    display: inline-block;
+    padding: 5px 13px;
+    background: rgba(212, 175, 55, 0.2);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .role-price-tag {
+    text-align: right;
+  }
+
+  .role-price-amount {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .role-price-sub {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Benefits & Prerequisites Grid */
+  .info-columns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 30px;
+  }
+
+  .info-column-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .info-column-title i {
+    color: var(--gold);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.93rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .feature-item i {
+    font-size: 1.15rem;
+    color: #4da6ff;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .prereq-list .feature-item i {
+    color: var(--gold);
+  }
+
+  /* Action Row */
+  .action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .councils-included-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .councils-included-text strong {
+    color: #ffffff;
+  }
+
+  .btn-google-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    border-radius: var(--radius-pill);
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    transition: transform 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+
+  .btn-google-form:hover {
+    background: #ffffff;
+    color: var(--navy);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Responsive Queries */
+  @media (max-width: 860px) {
+    .desktop-role-dock {
+      display: none;
+    }
+    .mobile-role-dock {
+      display: flex;
+    }
+    .info-columns-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .role-display-card {
+      padding: 24px 20px;
+    }
+    .role-header-line {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .role-price-tag {
+      text-align: left;
+    }
+    .action-row {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
+    }
+    .btn-google-form {
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">
+        <img src="/assets/logo.png" alt="NewMUN VIII logo">
+      </span>
+      <span class="brand-name">NewMUN VIII</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="councils.html" class="nav-link">Councils</a>
+      <a href="oc.html" class="nav-link">OC</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="gallery.html" class="nav-link">Gallery</a>
+      <a href="register.html" class="nav-link active">Register</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="register-viewport" id="dynamicViewport" style="background-image: url('/assets/unsc.jpeg');">
+
+  <div class="register-content-wrapper">
+    
+    <div class="top-dock-container">
+      
+      <div class="desktop-role-dock">
+        <button class="dock-btn is-active" data-role="senior-delegate">
+          <i class="bi bi-award-fill"></i>
+          <span>Senior Delegate</span>
+        </button>
+
+        <button class="dock-btn" data-role="junior-delegate">
+          <i class="bi bi-people-fill"></i>
+          <span>Junior Delegate</span>
+        </button>
+
+        <button class="dock-btn" data-role="chair">
+          <i class="bi bi-person-workspace"></i>
+          <span>Executive Chair</span>
+        </button>
+
+        <button class="dock-btn" data-role="security">
+          <i class="bi bi-shield-check"></i>
+          <span>Security & Runner</span>
+        </button>
+
+        <button class="dock-btn" data-role="press">
+          <i class="bi bi-camera-reels-fill"></i>
+          <span>Press Corps</span>
+        </button>
+      </div>
+
+      <div class="mobile-role-dock">
+        <button class="mobile-nav-arrow" id="prevRoleBtn" aria-label="Previous Role">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        
+        <div class="mobile-role-label-group">
+          <i class="bi bi-award-fill" id="mobileRoleIcon"></i>
+          <span id="mobileRoleTitle">Senior Delegate</span>
+        </div>
+
+        <button class="mobile-nav-arrow" id="nextRoleBtn" aria-label="Next Role">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="role-display-card" id="roleDisplayCard">
+      
+      <div class="role-header-line">
+        <div class="role-title-group">
+          <span class="role-badge" id="roleCategoryBadge">Senior Level</span>
+          <h2 id="roleTitle">Senior Council Delegate</h2>
+        </div>
+        <div class="role-price-tag">
+          <div class="role-price-amount" id="rolePrice">BHD 18</div>
+          <div class="role-price-sub">All Inclusive Fee</div>
+        </div>
+      </div>
+
+      <div class="info-columns-grid">
+        
+        <div>
+          <h3 class="info-column-title">
+            <i class="bi bi-stars"></i> Role Benefits
+          </h3>
+          <ul class="feature-list" id="benefitsList">
+            </ul>
+        </div>
+
+        <div>
+          <h3 class="info-column-title">
+            <i class="bi bi-check-square-fill"></i> Prerequisites
+          </h3>
+          <ul class="feature-list prereq-list" id="prereqList">
+            </ul>
+        </div>
+
+      </div>
+
+      <div class="action-row">
+        <div class="councils-included-text" id="councilsNote">
+          Available Councils: <strong>UNSC, FIA, Lok Sabha, DISEC</strong>
+        </div>
+        
+        <a href="https://forms.google.com" target="_blank" class="btn-google-form" id="googleFormBtn">
+          <span>Register via Google Form</span>
+          <i class="bi bi-box-arrow-up-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-title">NewMUN VIII &mdash; 2026</p>
+    </div>
+    <div class="footer-emblem">
+      <img src="/assets/logo.png" alt="NewMUN VIII logo" class="footer-logo">
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="councils.html">Councils</a>
+      <a href="oc.html">OC</a>
+      <a href="faq.html">FAQ</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/index.js"></script>
+
+<script>
+  /* =========================================================
+     Dynamic Full-Page Role & Council Switching Data
+     ========================================================= */
+
+  const roleKeys = ['senior-delegate', 'junior-delegate', 'chair', 'security', 'press'];
+  let currentRoleIndex = 0;
+
+  const roleData = {
+    'senior-delegate': {
+      title: 'Senior Council Delegate',
+      mobileTitle: 'Senior Delegate',
+      iconClass: 'bi-award-fill',
+      badge: 'Senior Level',
+      price: 'BHD 18',
+      bgImage: '/assets/unsc.jpeg',
+      councilsNote: 'Available Councils: <strong>UNSC, FIA, Lok Sabha, DISEC</strong>',
+      formUrl: 'https://forms.google.com',
+      benefits: [
+        'Engage in high-stakes debate on complex diplomatic & international agendas.',
+        'Eligible for Best Delegate, Outstanding Delegate, & Honorable Mention awards.',
+        'Hone public speaking, resolution drafting, and strategic alliance building.',
+        'Official Certificate of Delegation signed by the Secretary-General.'
+      ],
+      prerequisites: [
+        'Enrolled in High School or University (Grades 10 - 12 / Uni).',
+        'Prior MUN experience recommended or strong knowledge of international policy.',
+        'Commitment to research position papers and council background guides.'
+      ]
+    },
+    'junior-delegate': {
+      title: 'Junior Council Delegate',
+      mobileTitle: 'Junior Delegate',
+      iconClass: 'bi-people-fill',
+      badge: 'Junior Level',
+      price: 'BHD 15',
+      bgImage: '/assets/delegates.jpeg',
+      councilsNote: 'Available Councils: <strong>Historical Crisis Committee (HCC), UNGA</strong>',
+      formUrl: 'https://forms.google.com',
+      benefits: [
+        'Tailored guidance & orientation for beginner and developing delegates.',
+        'Dynamic crisis simulations and supportive committee environment.',
+        'Develop confidence, speech articulation, and critical thinking skills.',
+        'Official Delegate Certificate of Participation.'
+      ],
+      prerequisites: [
+        'Open to Middle and High School Students (Grades 6 - 9).',
+        'No prior MUN experience required; beginner orientation provided.',
+        'Enthusiasm for global affairs and willingness to participate in debate.'
+      ]
+    },
+    'chair': {
+      title: 'Executive Board (Chair)',
+      mobileTitle: 'Executive Chair',
+      iconClass: 'bi-person-workspace',
+      badge: 'Leadership Role',
+      price: 'BHD 18',
+      bgImage: '/assets/chairs.jpg',
+      councilsNote: 'Applicable to all <strong>Senior & Junior Councils</strong>',
+      formUrl: 'https://forms.google.com',
+      benefits: [
+        'Direct committee proceedings, author study guides, and mentor delegates.',
+        'Executive Leadership Certificate & formal recognition from the Secretariat.',
+        'Access to Executive VIP Lounge and official conference catering.',
+        'High-visibility diplomatic leadership experience for academic CVs.'
+      ],
+      prerequisites: [
+        'Minimum of 3 prior MUN experiences as Delegate or Executive Board.',
+        'Mastery of parliamentary procedure and impartial debate moderation.',
+        'Submission of Chair Motivation Statement / Study Guide draft.'
+      ]
+    },
+    'security': {
+      title: 'Security & Logistics Runner',
+      mobileTitle: 'Security & Runner',
+      iconClass: 'bi-shield-check',
+      badge: 'Operational Staff',
+      price: 'BHD 12',
+      bgImage: '/assets/legacy-vii.jpeg',
+      councilsNote: 'Conference Operations & Crisis Support Team',
+      formUrl: 'https://forms.google.com',
+      benefits: [
+        'Hands-on experience in event management, logistics, and crisis execution.',
+        'Secretariat Operational Service Certificate & recommendation letter opportunity.',
+        'Exclusive NewMUN Staff merch kit and full catering included.',
+        'Build crisis management and team leadership skills under pressure.'
+      ],
+      prerequisites: [
+        'High energy, punctuality, and strong organizational focus.',
+        'Full availability for mandatory pre-conference briefings and event days.',
+        'Great communication skills and collaborative team spirit.'
+      ]
+    },
+    'press': {
+      title: 'International Press Corps',
+      mobileTitle: 'Press Corps',
+      iconClass: 'bi-camera-reels-fill',
+      badge: 'Media & Journalism',
+      price: 'BHD 16',
+      bgImage: '/assets/press.jpg',
+      councilsNote: 'Journalism, Photojournalism & Media Teams',
+      formUrl: 'https://forms.google.com',
+      benefits: [
+        'Unrestricted press credentials across all active committee sessions.',
+        'Publish articles, photo essays, and interviews in the daily NewMUN Gazette.',
+        'Compete for Best Journalist and Best Photojournalist Awards.',
+        'Build a professional media portfolio for future careers.'
+      ],
+      prerequisites: [
+        'Passion for journalism, photography, or videography.',
+        'Personal camera (for Photojournalists) or laptop for live reporting.',
+        'Ability to deliver quality content under fast-paced deadline conditions.'
+      ]
+    }
+  };
+
+  /* DOM Elements */
+  const viewport = document.getElementById('dynamicViewport');
+  const roleDisplayCard = document.getElementById('roleDisplayCard');
+  const roleCategoryBadge = document.getElementById('roleCategoryBadge');
+  const roleTitle = document.getElementById('roleTitle');
+  const rolePrice = document.getElementById('rolePrice');
+  const councilsNote = document.getElementById('councilsNote');
+  const benefitsList = document.getElementById('benefitsList');
+  const prereqList = document.getElementById('prereqList');
+  const googleFormBtn = document.getElementById('googleFormBtn');
+
+  /* Dock Elements */
+  const desktopButtons = document.querySelectorAll('.dock-btn');
+  const mobileRoleTitle = document.getElementById('mobileRoleTitle');
+  const mobileRoleIcon = document.getElementById('mobileRoleIcon');
+  const prevRoleBtn = document.getElementById('prevRoleBtn');
+  const nextRoleBtn = document.getElementById('nextRoleBtn');
+
+  function updateRoleView(roleKey) {
+    const data = roleData[roleKey];
+    if (!data) return;
+
+    currentRoleIndex = roleKeys.indexOf(roleKey);
+
+    // 1. Sync Desktop Active State
+    desktopButtons.forEach(btn => {
+      btn.classList.toggle('is-active', btn.dataset.role === roleKey);
+    });
+
+    // 2. Sync Mobile View Text & Icon
+    mobileRoleTitle.textContent = data.mobileTitle;
+    mobileRoleIcon.className = `bi ${data.iconClass}`;
+
+    // 3. Smooth Card Fade Transition
+    roleDisplayCard.style.opacity = '0.3';
+    roleDisplayCard.style.transform = 'translateY(8px)';
+
+    setTimeout(() => {
+      // Background Image Update
+      viewport.style.backgroundImage = `url('${data.bgImage}')`;
+
+      // Header Text Update
+      roleTitle.textContent = data.title;
+      roleCategoryBadge.textContent = data.badge;
+      rolePrice.textContent = data.price;
+      councilsNote.innerHTML = data.councilsNote;
+      googleFormBtn.href = data.formUrl;
+
+      // Render Benefits
+      benefitsList.innerHTML = data.benefits
+        .map(b => `<li class="feature-item"><i class="bi bi-patch-check-fill"></i> ${b}</li>`)
+        .join('');
+
+      // Render Prerequisites
+      prereqList.innerHTML = data.prerequisites
+        .map(p => `<li class="feature-item"><i class="bi bi-check2-circle"></i> ${p}</li>`)
+        .join('');
+
+      // Fade card back in
+      roleDisplayCard.style.opacity = '1';
+      roleDisplayCard.style.transform = 'translateY(0)';
+    }, 200);
+  }
+
+  /* Event Listeners for Desktop Buttons */
+  desktopButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      updateRoleView(btn.dataset.role);
+    });
+  });
+
+  /* Event Listeners for Mobile Carousel (< >) */
+  prevRoleBtn.addEventListener('click', () => {
+    currentRoleIndex = (currentRoleIndex - 1 + roleKeys.length) % roleKeys.length;
+    updateRoleView(roleKeys[currentRoleIndex]);
+  });
+
+  nextRoleBtn.addEventListener('click', () => {
+    currentRoleIndex = (currentRoleIndex + 1) % roleKeys.length;
+    updateRoleView(roleKeys[currentRoleIndex]);
+  });
+
+  /* Initialize Default View */
+  document.addEventListener('DOMContentLoaded', () => {
+    updateRoleView('senior-delegate');
+  });
+</script>
+</body>
+</html>
